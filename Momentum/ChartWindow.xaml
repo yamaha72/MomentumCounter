@@ -1,0 +1,64 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Momentum.ChartWindow"
+        Title="MomentumCounter" Height="540" Width="841" Closing="Window_Close" Loaded="Window_Loaded_1" MouseMove="Mousemove" SizeChanged="Window_SizeChanged" MouseLeftButtonUp="Stop_Move" MinWidth="640" MinHeight="400" Background="Black" MouseWheel="Mousewheel">
+    <Grid Height="510" Width="830" x:Name="main_grid">
+        <Border BorderThickness="0,0.8,0,0" BorderBrush="#FF8D6600" Height="416" HorizontalAlignment="Left" Margin="780,54,0,0" x:Name="border_prices" VerticalAlignment="Top" Width="49" ClipToBounds="True" Background="Black" MouseLeftButtonUp="Create_Line_Y" MouseLeftButtonDown="Activate_Move_Y" MouseRightButtonDown="Color_menu_Y">
+            <Canvas Height="414" x:Name="canvas_prices" Width="43" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent" Margin="0"/>
+        </Border>
+        <Border BorderBrush="#FF8D6600" Height="416" HorizontalAlignment="Left" Margin="1,54,0,0" x:Name="border_chart" VerticalAlignment="Top" Width="780" Background="Black" BorderThickness="0.8" MouseDown="MousedownBorderChart" MouseLeave="MouseleaveBorderChart">
+            <Canvas Height="414" x:Name="main_chart_canvas" Width="778" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" ClipToBounds="True" Background="Transparent" >
+                <Canvas x:Name="canvas_chart" Height="388" Width="771" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1" Canvas.Left="0" Canvas.Top="0"/>
+                <Canvas x:Name="canv_vert_gstgr" Height="100" Canvas.Top="0" Width="110" Canvas.Left="0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent"  Panel.ZIndex="2"/>
+                <Canvas x:Name="LinesCanvas" Height="388" Canvas.Left="0" Canvas.Top="0" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent"/>
+                <Canvas x:Name="canvas_vertical_line" Height="100" Canvas.Left="0" Canvas.Top="0" Width="771" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent"/>
+                <Canvas x:Name="canvas_gistogramm" Height="100" Canvas.Left="0" Canvas.Top="0" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent"  Panel.ZIndex="3"/>
+                <Canvas x:Name="canvas_for_label" Height="1" Canvas.Left="0" Canvas.Top="0" Width="1" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent" Panel.ZIndex="5"/>
+            </Canvas>
+        </Border>
+        <Border  Height="35" HorizontalAlignment="Left" Margin="1,470,0,0" x:Name="border_times" BorderThickness="0,0,0,0" BorderBrush="#FF8D6600"  VerticalAlignment="Top" Width="780" ClipToBounds="True" Background="Black" MouseLeftButtonUp="Create_Line_X" MouseLeftButtonDown="Activate_Move_X" MouseRightButtonDown="Color_menu_X">
+            <Canvas x:Name="canvas_times" Height="28" VerticalAlignment="Top" Width="771" HorizontalAlignment="Left" Background="Transparent" Margin="0" />
+        </Border>
+        <Button x:Name="button14" Content="-" HorizontalAlignment="Left" Margin="781,474,0,0" VerticalAlignment="Top" Width="22" Height="22" Background="#FF3D24AE" BorderBrush="Black" Click="Expand" Foreground="#FFF7F7F7"/>
+        <Button x:Name="button15" Content="-&gt;|" HorizontalAlignment="Left" Margin="803,474,0,0" VerticalAlignment="Top" Width="22" Height="22" Background="#FF3D24AE" BorderBrush="Black" Click="Pozitionir_2" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
+        <Label x:Name="First_visibl_date_label" Content="" HorizontalAlignment="Left" Margin="-2,480,0,0" VerticalAlignment="Top" Foreground="LightGray" Width="54" MouseLeftButtonDown="Activate_Move_X"/>
+        <Canvas x:Name="canvas_for_button" HorizontalAlignment="Left" Height="54" Margin="0" VerticalAlignment="Top" Width="830" Background="#FF180232">
+            <Button Content="X" Height="18" HorizontalAlignment="Left" Canvas.Left="796" Canvas.Top="-5" x:Name="button13" VerticalAlignment="Top" Width="30" BorderBrush="Black" IsEnabled="True" Foreground="Black" Click="AppClose" Background ="#FFF33A3A"/>
+            <ComboBox Height="25" HorizontalAlignment="Left" x:Name="comboBox1" VerticalAlignment="Top" Width="92" SelectionChanged="Select_Instrument" Foreground="Black" BorderBrush="#FF8C7AE0" Background="#FF8C7AE0" Canvas.Left="1" Canvas.Top="2" />
+            <Button Content="1" Height="27" x:Name="button5" VerticalAlignment="Top" Click="Click_5" HorizontalAlignment="Left" Width="27" Background="#FF009AA0" BorderBrush="#FF180232" Canvas.Left="94" Canvas.Top="1" />
+            <Button Content="5" Height="27" x:Name="button6" VerticalAlignment="Top" Foreground="Red" HorizontalAlignment="Left" Width="27" Click="Click_6" Background="#FF2323BD" BorderBrush="#FF180232" Canvas.Left="121" Canvas.Top="1" />
+            <Button Content="H4" Height="27" HorizontalAlignment="Left" x:Name="button7" VerticalAlignment="Top" Width="27" Click="Click_7" Background="#FF009AA0" BorderBrush="#FF180232" Canvas.Left="229" Canvas.Top="1" />
+            <Button Content="15" Height="27" x:Name="button8" VerticalAlignment="Top" Click="Click_8" HorizontalAlignment="Left" Width="27" Background="#FF009AA0" BorderBrush="#FF180232" Canvas.Left="148" Canvas.Top="1" />
+            <Button Content="30" Height="27" x:Name="button9" VerticalAlignment="Top" Click="Click_9" HorizontalAlignment="Left" Width="27" Background="#FF009AA0" BorderBrush="#FF180232" Canvas.Left="175" Canvas.Top="1" />
+            <Button Content="H" Height="27" x:Name="button10" VerticalAlignment="Top" Click="Click_10" HorizontalAlignment="Left" Width="27" Background="#FF009AA0" BorderBrush="#FF180232" Canvas.Left="202" Canvas.Top="1" />
+            <Button Content="D" Height="27" HorizontalAlignment="Left" x:Name="button11" VerticalAlignment="Top" Width="27" Click="Click_11" Background="#FF009AA0" BorderBrush="#FF180232" Canvas.Left="256" Canvas.Top="1" />
+            <DatePicker Height="25" HorizontalAlignment="Left" x:Name="datePicker1" VerticalAlignment="Top" Width="101" SelectedDateChanged="datePicker1_SelectedDateChanged" Background="#FF8C7AE0" BorderBrush="#FF8C7AE0" Canvas.Left="312" Canvas.Top="2" />
+            <DatePicker Height="25" HorizontalAlignment="Left" x:Name="datePicker2" VerticalAlignment="Top" Width="100" SelectedDateChanged="datePicker2_SelectedDateChanged" Background="#FF8C7AE0"  BorderBrush="#FF8C7AE0" Canvas.Left="415" Canvas.Top="2"/>
+            <Button Content="Load chart" Height="23" HorizontalAlignment="Left" x:Name="button12" VerticalAlignment="Top" Width="78" Click="Load_сhart" Background="#FFB83D3D" BorderBrush="#FFB83D3D" Margin="746,29,0,0"/>
+            <Button Content="-" Height="18" HorizontalAlignment="Left" x:Name="button17" VerticalAlignment="Top" Width="25" BorderBrush="Black" IsEnabled="True" Foreground="Black" Background="#FF18CFD6" FontSize="14" Click="AllWindowMinimized" Canvas.Left="746" Canvas.Top="-5"/>
+
+            <Label Height="27" x:Name="label7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="66" Content="" Foreground="#FFEE5E1B" Margin="757,6,0,0"/>
+            <DockPanel x:Name="dockpanel1" VerticalAlignment="Top" HorizontalAlignment="Left" Height="23" Background="#FF3D24AE" Canvas.Left="1" Canvas.Top="29" Width="120">
+                <Menu x:Name="MenuDockPanel" DockPanel.Dock="Top" Height="Auto" Background="#FFE4BA00">
+                    <MenuItem x:Name="Windows" Header="Windows" Background="#FFE4BA00" Foreground="Black" >
+                        <MenuItem x:Name="NewChart" Header="_New chart" Background="#FFE4BA00" Click="Click_1" Foreground="Black"/>
+                        <MenuItem x:Name="Login" Header="_Login" Background="#FFE4BA00" Click="LoginClick" Foreground="Black"/>
+                    </MenuItem>
+                    <MenuItem x:Name="MenuSettings" Header="Settings" Background="#FFE4BA00" Foreground="Black" >
+                        <MenuItem x:Name="Filters_setting" Header="_Volume filters" Background="#FFE4BA00" Click="Filtersss" Foreground="Black"/>
+                        <MenuItem x:Name="Histogramms_setting" Header="_Histograms" Background="#FFE4BA00" Click="Hiatogramm_settings" Foreground="Black"/>
+                    </MenuItem>
+                </Menu>
+            </DockPanel>
+            <Button Content="T" Height="25" VerticalAlignment="Top" Click="TodayContextMenu_EndCalendar" HorizontalAlignment="Left" Width="27" Background="#FF8C7AE0" BorderBrush="#FF8C7AE0" Canvas.Left="517" Canvas.Top="2" />
+            <Button Content="T" HorizontalAlignment="Left" VerticalAlignment="Top" Width="26" Height="25" Background="#FF8C7AE0" BorderBrush="#FF8C7AE0" Click="TodayContextMenu" Canvas.Left="284" Canvas.Top="2" Foreground="Black"/>
+            <Button Content="#" Height="18" HorizontalAlignment="Left" x:Name="NormalStateButton" VerticalAlignment="Top" Width="25" BorderBrush="Black" IsEnabled="True" Foreground="Black"  Background="#FF18CFD6" Click="AllWindowNormalized" Canvas.Left="771" Canvas.Top="-5"/>
+            <Label Content="Price step" Canvas.Left="118" Canvas.Top="27" Height="26" VerticalContentAlignment="Top" Foreground="White"/>
+            <TextBox x:Name="PriceStepTextBox" Height="23" Canvas.Left="176" TextWrapping="Wrap" Text="" Canvas.Top="29" Background="#FFE4BA00" Width="107" TextChanged="PriceStepTextChanged"/>
+
+
+
+        </Canvas>
+    </Grid>
+</Window>

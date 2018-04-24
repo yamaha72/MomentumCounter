@@ -1,0 +1,15 @@
+﻿<Window x:Class="Momentum.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RTT" Height="300" Width="300" Background="Black" Closed="WindowClosed" MinWidth="300" MinHeight="300"  MaxWidth="300" MaxHeight="300">
+    <Grid>
+        <TextBox x:Name="textbox_1" HorizontalAlignment="Left" Height="25" Margin="108,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FF4FDCE2" TextChanged="TextLoginChanged"/>
+        <Label Content="Login" HorizontalAlignment="Left" Margin="41,49,0,0" VerticalAlignment="Top" Width="72" Foreground="White"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="42,101,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <PasswordBox x:Name="passwordbox_1" HorizontalAlignment="Left" Margin="108,101,0,0" VerticalAlignment="Top" Width="120" Height="25" Background="#FF4FDCE2" PasswordChanged="PasswordBoxChanged"/>
+        <CheckBox x:Name="CheckBoxSaveLogin" Content="Autorun" HorizontalAlignment="Left" Margin="108,149,0,0" VerticalAlignment="Top" Foreground="White" Background="#FF4FDCE2"/>
+        <Button x:Name="ConnectButton" Content="Connect" HorizontalAlignment="Left" Margin="108,187,0,0" VerticalAlignment="Top" Width="75" Height="25" Background="#FF4FDCE2" BorderBrush="Black" Click="Connect"/>
+        <Label x:Name="feed_back_label" Content="" HorizontalAlignment="Left" Margin="57,222,0,0" VerticalAlignment="Top" Foreground="Red" Width="204"/>
+
+    </Grid>
+</Window>
